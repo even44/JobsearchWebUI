@@ -1,0 +1,29 @@
+<h1>Application List</h1>
+<button (click)="showJobApplication()">Update!</button>
+<table>
+	<thead>
+		<tr>
+			<th>Position</th>
+			<th>Company</th>
+			<th>Search Date</th>
+			<th>Deadline</th>
+			<th>Response</th>
+			<th>Interview</th>
+			<th>Done</th>
+			<th>Link</th>
+		</tr>
+	</thead>
+	<tbody *ngIf="jobApplications.length > 0">
+		<tr *ngFor="let application of jobApplications">
+			<td>{{application.position}}</td>
+			<td>{{application.company}}</td>
+			<td>{{application.search_date}}</td>
+			<td>{{application.deadline}}</td>
+			<td>{{application.response}}</td>
+			<td>{{application.interview}}</td>
+			<td>{{application.done}}</td>
+			<td>{{application.link}}</td>
+		</tr>
+	</tbody>
+</table>
+

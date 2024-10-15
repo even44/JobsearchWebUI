@@ -1,0 +1,42 @@
+
+<h1>Create Application</h1>
+<form [formGroup]="jobApplicationGroup" (ngSubmit)="onSubmit()">
+
+	<label for="id">Id: </label>
+	<input id="id" type="number" formControlName="id">
+	<br>
+
+	<label for="position">Position: </label>
+	<input id="position" type="text" formControlName="position">
+	<br>
+
+	<label for="company">Company: </label>
+	<input id="company" type="text" formControlName="company">
+	<br>
+
+	<label for="search_date">Search Date: </label>
+	<input id="search_date" type="date" formControlName="search_date">
+	<br>
+
+	<label for="deadline">Deadline: </label>
+	<input id="deadline" type="date" formControlName="deadline">
+	<br>
+
+	<label for="response">Response: </label>
+	<input id="response" type="checkbox" formControlName="response">
+	<br>
+
+	<label for="interview">Interview: </label>
+	<input id="interview" type="checkbox" formControlName="interview">
+	<br>
+
+	<label for="done">Done: </label>
+	<input id="done" type="checkbox" formControlName="done">
+	<br>
+	<label for="link">Link: </label>
+	<input id="link" type="url" formControlName="link">
+	<br>
+
+	<button type="submit" [disabled]="!jobApplicationGroup.valid">Submit</button>
+</form>
+	

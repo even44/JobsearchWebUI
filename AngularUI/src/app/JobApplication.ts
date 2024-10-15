@@ -1,0 +1,11 @@
+export interface JobApplication {
+	id: number;
+	position: string;
+	company: string;
+	search_date: string;
+	deadline: string;
+	response: boolean;
+	interview: boolean;
+	done: false;
+	link: string;
+}
