@@ -15,14 +15,14 @@ export class JobApplicationCreateComponent {
 
 	jobApplicationGroup = new FormGroup({
 		id: new FormControl(0),
-		position: new FormControl(''),
-		company: new FormControl(''),
-		search_date: new FormControl(''),
-		deadline: new FormControl(''),
+		position: new FormControl('Postition'),
+		company: new FormControl('Company'),
+		search_date: new FormControl('2024-10-15'),
+		deadline: new FormControl('2024-10-15'),
 		response: new FormControl(false),
 		interview: new FormControl(false),
 		done: new FormControl(false),
-		link: new FormControl(''),
+		link: new FormControl('https://www.finn.no'),
 
 	})
 
@@ -30,7 +30,5 @@ export class JobApplicationCreateComponent {
 		console.warn(this.jobApplicationGroup.value)
 		let jobApplication: JobApplication = <JobApplication>this.jobApplicationGroup.value
 		this.jobApplicationService.createJobApplication(jobApplication).subscribe()
-		
-
 	}
 }
