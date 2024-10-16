@@ -20,6 +20,11 @@ export class JobApplicationsTableComponent {
 			.subscribe(data => this.jobApplications = data)
 	}
 
+	deleteJobApplication(id: number){
+		this.jobApplicationService.deleteJobApplication(id)
+			.subscribe()
+	}
+
 
 
 	application1: JobApplication = {

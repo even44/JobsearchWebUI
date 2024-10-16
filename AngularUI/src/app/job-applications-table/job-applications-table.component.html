@@ -11,6 +11,7 @@
 			<th>Interview</th>
 			<th>Done</th>
 			<th>Link</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody *ngIf="jobApplications.length > 0">
@@ -23,6 +24,7 @@
 			<td>{{application.interview}}</td>
 			<td>{{application.done}}</td>
 			<td>{{application.link}}</td>
+			<td><button (click)="deleteJobApplication(application.id)">Delete</button></td>
 		</tr>
 	</tbody>
 </table>
