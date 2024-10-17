@@ -1,5 +1,5 @@
 <h1>Application List</h1>
-<button (click)="showJobApplication()">Update!</button>
+<button (click)="showJobApplications()">Refresh!</button>
 <table>
 	<thead>
 		<tr>
@@ -7,9 +7,7 @@
 			<th>Company</th>
 			<th>Search Date</th>
 			<th>Deadline</th>
-			<th>Response</th>
-			<th>Interview</th>
-			<th>Done</th>
+			<th>R I D</th>
 			<th>Link</th>
 			<th>Actions</th>
 		</tr>
@@ -20,11 +18,13 @@
 			<td>{{application.company}}</td>
 			<td>{{application.search_date}}</td>
 			<td>{{application.deadline}}</td>
-			<td>{{application.response}}</td>
-			<td>{{application.interview}}</td>
-			<td>{{application.done}}</td>
-			<td>{{application.link}}</td>
-			<td><button (click)="deleteJobApplication(application.id)">Delete</button></td>
+			<td>
+				<input type="checkbox" checked="{{application.response ? 'checked' : ''}}">
+				<input type="checkbox" checked="{{application.interview ? 'checked' : ''}}">
+				<input type="checkbox" checked="{{application.done ? 'checked' : ''}}">
+			</td>
+			<td><a href="{{application.link}}">Link</a></td>
+			<td><button>Update</button><button (click)="deleteJobApplication(application.id)">Delete</button></td>
 		</tr>
 	</tbody>
 </table>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, effect, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { JobApplication } from '../JobApplication';
 import { NgFor, NgIf } from '@angular/common';
@@ -13,9 +13,17 @@ import { JobApplicationService } from '../job-application.service';
 })
 export class JobApplicationsTableComponent {
 
-	constructor(private jobApplicationService: JobApplicationService){}
+	
 
-	showJobApplication(){
+	constructor(private jobApplicationService: JobApplicationService){
+		this.showJobApplications()
+	}
+
+	jobApplications: JobApplication[] = []
+
+	
+
+	showJobApplications(){
 		this.jobApplicationService.getJobApplications()
 			.subscribe(data => this.jobApplications = data)
 	}
@@ -25,21 +33,10 @@ export class JobApplicationsTableComponent {
 			.subscribe()
 	}
 
+	
 
 
-	application1: JobApplication = {
-		id: 0,
-		position: 'Engineer',
-		company: 'Datapass AS',
-		search_date: '11/10/2024',
-		deadline: '15/10/2024',
-		response: false,
-		interview: false,
-		done: false,
-		link: "https://www.finn.no"
-
-	}
 
 
-	jobApplications = [this.application1]
+	
 }
