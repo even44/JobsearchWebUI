@@ -1,15 +1,15 @@
 <h1>Application List</h1>
 <button (click)="showJobApplications()">Refresh!</button>
-<table>
+<table class="table table-striped">
 	<thead>
 		<tr>
-			<th>Position</th>
-			<th>Company</th>
-			<th>Search Date</th>
-			<th>Deadline</th>
-			<th>R I D</th>
-			<th>Link</th>
-			<th>Actions</th>
+			<th scope="col">Position</th>
+			<th scope="col">Company</th>
+			<th scope="col">Search Date</th>
+			<th scope="col">Deadline</th>
+			<th scope="col">R I D</th>
+			<th scope="col">Link</th>
+			<th scope="col">Actions</th>
 		</tr>
 	</thead>
 	<tbody *ngIf="jobApplications.length > 0">
@@ -24,7 +24,7 @@
 				<input type="checkbox" checked="{{application.done ? 'checked' : ''}}">
 			</td>
 			<td><a href="{{application.link}}">Link</a></td>
-			<td><button>Update</button><button (click)="deleteJobApplication(application.id)">Delete</button></td>
+			<td><button (click)="updateJobApplication(application.id)">Update</button><button (click)="deleteJobApplication(application.id)">Delete</button></td>
 		</tr>
 	</tbody>
 </table>

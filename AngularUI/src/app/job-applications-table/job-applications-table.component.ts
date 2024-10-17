@@ -32,6 +32,24 @@ export class JobApplicationsTableComponent {
 		this.jobApplicationService.deleteJobApplication(id)
 			.subscribe()
 	}
+	
+	updateJobApplication(id: number){
+		var application: JobApplication
+		for (let a in this.jobApplications) {
+			if (this.jobApplications[a].id == id){
+				application = this.jobApplications[a]
+				this.jobApplicationService.updateJobApplication(id, application).subscribe()
+			}
+		}
+		
+		
+		
+		
+	}
+	
+	checkId(jobApplication: JobApplication){
+		return jobApplication.id == 1;
+	}
 
 	
 

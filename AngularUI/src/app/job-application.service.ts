@@ -19,4 +19,8 @@ export class JobApplicationService {
 	deleteJobApplication(id: number) {
 		return this.httpClient.delete<JobApplication>("http://localhost:3001/jobapplications/" + id)
 	}
+	
+	updateJobApplication(id: number, application: JobApplication){
+		return this.httpClient.put<JobApplication>("https://localhost:3001/jobapplications/" + id, application)
+	}
 }
