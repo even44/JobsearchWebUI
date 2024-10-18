@@ -21,6 +21,6 @@ export class JobApplicationService {
 	}
 	
 	updateJobApplication(id: number, application: JobApplication){
-		return this.httpClient.put<JobApplication>("https://localhost:3001/jobapplications/" + id, application)
+		return this.httpClient.put<JobApplication>("http://localhost:3001/jobapplications/" + id, application)
 	}
 }

@@ -19,9 +19,9 @@
 			<td>{{application.search_date}}</td>
 			<td>{{application.deadline}}</td>
 			<td>
-				<input type="checkbox" checked="{{application.response ? 'checked' : ''}}">
-				<input type="checkbox" checked="{{application.interview ? 'checked' : ''}}">
-				<input type="checkbox" checked="{{application.done ? 'checked' : ''}}">
+				<input (change)="getStats($event)" id="{{application.id}}" value="response" type="checkbox" checked="{{application.response ? 'checked' : ''}}">
+				<input (change)="getStats($event)" id="{{application.id}}" value="interview" type="checkbox" checked="{{application.interview ? 'checked' : ''}}">
+				<input (change)="getStats($event)" id="{{application.id}}" value="done" type="checkbox" checked="{{application.done ? 'checked' : ''}}">
 			</td>
 			<td><a href="{{application.link}}">Link</a></td>
 			<td><button (click)="updateJobApplication(application.id)">Update</button><button (click)="deleteJobApplication(application.id)">Delete</button></td>
