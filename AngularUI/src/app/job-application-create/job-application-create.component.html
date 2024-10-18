@@ -2,38 +2,41 @@
 <h1>Create Application</h1>
 <form [formGroup]="jobApplicationGroup" (ngSubmit)="onSubmit()">
 
+	<div class="input-group mb-3">
+		<span class="input-group-text" id="basic-addon1">Position</span>
+		<input class="form-control" id="position" type="text" formControlName="position">
+		<span class="input-group-text" id="basic-addon1">Company</span>
+		<input class="form-control" id="company" type="text" formControlName="company">
+	</div>
 
-	<label for="position">Position: </label>
-	<input id="position" type="text" formControlName="position">
-	<br>
+	
+	<div class="input-group mb-3">
+		<span class="input-group-text" id="basic-addon1">Search date</span>
+		<input class="form-control" id="search_date" type="date" formControlName="search_date">
+		<span class="input-group-text" id="basic-addon1">Deadline</span>
+		<input class="form-control" id="deadline" type="date" formControlName="deadline">
+	</div>
+	
+	<div class="input-group mb-3">
+		<span class="input-group-text" id="basic-addon1">Link</span>
+		<input class="form-control" id="link" type="url" formControlName="link">
+	</div>
+	
+	<div class="input-group mb-3">
+		<span class="input-group-text" id="basic-addon1">Response</span>
+		<div class="input-group-text">
+			<input class="form-check-input" id="response" type="checkbox" formControlName="response">
+		</div>
+		<span class="input-group-text" id="basic-addon1">Interview</span>
+		<div class="input-group-text">
+			<input class="form-check-input" id="interview" type="checkbox" formControlName="interview">
+		</div>
+		<span class="input-group-text" id="basic-addon1">Done</span>
+		<div class="input-group-text">
+			<input class="form-check-input" id="done" type="checkbox" formControlName="done">
+		</div>
+	</div>
 
-	<label for="company">Company: </label>
-	<input id="company" type="text" formControlName="company">
-	<br>
-
-	<label for="search_date">Search Date: </label>
-	<input id="search_date" type="date" formControlName="search_date">
-	<br>
-
-	<label for="deadline">Deadline: </label>
-	<input id="deadline" type="date" formControlName="deadline">
-	<br>
-
-	<label for="response">Response: </label>
-	<input id="response" type="checkbox" formControlName="response">
-	<br>
-
-	<label for="interview">Interview: </label>
-	<input id="interview" type="checkbox" formControlName="interview">
-	<br>
-
-	<label for="done">Done: </label>
-	<input id="done" type="checkbox" formControlName="done">
-	<br>
-	<label for="link">Link: </label>
-	<input id="link" type="url" formControlName="link">
-	<br>
-
-	<button type="submit" [disabled]="!jobApplicationGroup.valid">Submit</button>
+	<button class="btn btn-success" type="submit" [disabled]="!jobApplicationGroup.valid">Submit</button>
 </form>
 	

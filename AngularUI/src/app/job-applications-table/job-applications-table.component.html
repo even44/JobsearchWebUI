@@ -1,5 +1,5 @@
 <h1>Application List</h1>
-<button (click)="showJobApplications()">Refresh!</button>
+<button class="btn btn-primary" (click)="showJobApplications()">Refresh!</button>
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -19,12 +19,18 @@
 			<td>{{application.search_date}}</td>
 			<td>{{application.deadline}}</td>
 			<td>
-				<input (change)="getStats($event)" id="{{application.id}}" value="response" type="checkbox" checked="{{application.response ? 'checked' : ''}}">
-				<input (change)="getStats($event)" id="{{application.id}}" value="interview" type="checkbox" checked="{{application.interview ? 'checked' : ''}}">
-				<input (change)="getStats($event)" id="{{application.id}}" value="done" type="checkbox" checked="{{application.done ? 'checked' : ''}}">
+				<div class="input-group">
+					<div class="input-group-text">
+						<input class="form-check-input" (change)="getStats($event)" id="{{application.id}}" value="response" type="checkbox" checked="{{application.response ? 'checked' : ''}}">
+						<input class="form-check-input" (change)="getStats($event)" id="{{application.id}}" value="interview" type="checkbox" checked="{{application.interview ? 'checked' : ''}}">
+						<input class="form-check-input" (change)="getStats($event)" id="{{application.id}}" value="done" type="checkbox" checked="{{application.done ? 'checked' : ''}}">
+					</div>
+				</div>
+				
+				
 			</td>
 			<td><a href="{{application.link}}">Link</a></td>
-			<td><button (click)="updateJobApplication(application.id)">Update</button><button (click)="deleteJobApplication(application.id)">Delete</button></td>
+			<td><button class="btn btn-warning" (click)="updateJobApplication(application.id)">Update</button><button class="btn btn-danger" (click)="deleteJobApplication(application.id)">Delete</button></td>
 		</tr>
 	</tbody>
 </table>
