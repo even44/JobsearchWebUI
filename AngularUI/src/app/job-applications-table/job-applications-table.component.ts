@@ -20,6 +20,7 @@ export class JobApplicationsTableComponent {
 	}
 
 	jobApplications: JobApplication[] = []
+	applicationState: string[] = []
 
 	
 
