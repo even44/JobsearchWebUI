@@ -58,7 +58,11 @@ export class JobApplicationsTableComponent {
 					application.done = event.target.checked
 				}
 				console.log('Field: %s Value: %s', event.target.value, event.target.checked)
-				this.jobApplicationService.updateJobApplication(event.target.id, application).subscribe()
+				this.jobApplicationService.updateJobApplication(event.target.id, application).subscribe(res => {
+					this.showJobApplications()
+				}
+					
+				)
 			}
 		}
 	}
