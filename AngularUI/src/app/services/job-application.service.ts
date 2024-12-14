@@ -1,26 +1,31 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { JobApplication } from "../model/JobApplication";
 import { HttpClient } from "@angular/common/http";
 
 @Injectable({providedIn: 'root'})
 export class JobApplicationService {
 
-	constructor(private httpClient: HttpClient) {}
+	http = inject(HttpClient)
+	baseUrl = `http://kornelius.local:3001`
 
 
 	getJobApplications(){
-		return this.httpClient.get<JobApplication[]>("http://kornelius.local:3001/jobapplications")
+		const url = `${this.baseUrl}/jobapplications`
+		return this.http.get<JobApplication[]>(url)
 	}
 
 	createJobApplication(application: JobApplication ){
-		return this.httpClient.post<JobApplication>("http://kornelius.local:3001/jobapplications", application)
+		const url = `${this.baseUrl}/jobapplications`
+		return this.http.post<JobApplication>(url, application)
 	}
 
 	deleteJobApplication(id: number) {
-		return this.httpClient.delete<JobApplication>("http://kornelius.local:3001/jobapplications/" + id)
+		const url = `${this.baseUrl}/jobapplications/`
+		return this.http.delete<JobApplication>(url + id)
 	}
 	
 	updateJobApplication(id: number, application: JobApplication){
-		return this.httpClient.put<JobApplication>("http://kornelius.local:3001/jobapplications/" + id, application)
+		const url = `${this.baseUrl}/jobapplications/`
+		return this.http.put<JobApplication>(url + id, application)
 	}
 }

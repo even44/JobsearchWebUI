@@ -1,4 +1,4 @@
-import { Component, effect, input } from '@angular/core';
+import { Component, effect, input, signal } from '@angular/core';
 import { FormsModule, ValueChangeEvent } from '@angular/forms';
 import { JobApplication } from '../../model/JobApplication';
 import { NgFor, NgIf } from '@angular/common';
@@ -19,14 +19,14 @@ export class JobApplicationsTableComponent {
 		this.showJobApplications()
 	}
 
-	jobApplications: JobApplication[] = []
-	applicationState: string[] = []
+	jobApplications = signal<Array<JobApplication>>([])
+
 
 	
 
 	showJobApplications(){
 		this.jobApplicationService.getJobApplications()
-			.subscribe(data => this.jobApplications = data)
+			.subscribe(data => this.jobApplications.set(data))
 	}
 
 	deleteJobApplication(id: number){
@@ -42,12 +42,12 @@ export class JobApplicationsTableComponent {
 	getStats(event: any){
 		
 		var application: JobApplication
-		for (let a in this.jobApplications) {
+		for (let a in this.jobApplications()) {
 			let id: number = Number(event.target.id)
-			console.log(this.jobApplications[a].id == id, this.jobApplications[a].id, id, event.target.id)
-			if (this.jobApplications[a].id == event.target.id){
+			console.log(this.jobApplications()[a].id == id, this.jobApplications()[a].id, id, event.target.id)
+			if (this.jobApplications()[a].id == event.target.id){
 				console.log('Field: %s Value: %s', event.target.value, event.target.checked)
-				application = this.jobApplications[a]
+				application = this.jobApplications()[a]
 				if (event.target.value == "response") {
 					application.response = event.target.checked
 				}
