@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { JobApplication } from "../JobApplication";
-import { JobApplicationService } from '../job-application.service';
+import { JobApplication } from "../../model/JobApplication";
+import { JobApplicationService } from '../../services/job-application.service';
 
 @Component({
   selector: 'app-job-application-create',

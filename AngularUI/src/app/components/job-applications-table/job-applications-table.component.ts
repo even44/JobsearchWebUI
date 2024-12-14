@@ -1,8 +1,8 @@
 import { Component, effect, input } from '@angular/core';
 import { FormsModule, ValueChangeEvent } from '@angular/forms';
-import { JobApplication } from '../JobApplication';
+import { JobApplication } from '../../model/JobApplication';
 import { NgFor, NgIf } from '@angular/common';
-import { JobApplicationService } from '../job-application.service';
+import { JobApplicationService } from '../../services/job-application.service';
 
 @Component({
   selector: 'app-job-applications-table',
