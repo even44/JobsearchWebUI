@@ -9,18 +9,18 @@ export class JobApplicationService {
 
 
 	getJobApplications(){
-		return this.httpClient.get<JobApplication[]>("http://localhost:3001/jobapplications")
+		return this.httpClient.get<JobApplication[]>("http://kornelius.local:3001/jobapplications")
 	}
 
 	createJobApplication(application: JobApplication ){
-		return this.httpClient.post<JobApplication>("http://localhost:3001/jobapplications", application)
+		return this.httpClient.post<JobApplication>("http://kornelius.local:3001/jobapplications", application)
 	}
 
 	deleteJobApplication(id: number) {
-		return this.httpClient.delete<JobApplication>("http://localhost:3001/jobapplications/" + id)
+		return this.httpClient.delete<JobApplication>("http://kornelius.local:3001/jobapplications/" + id)
 	}
 	
 	updateJobApplication(id: number, application: JobApplication){
-		return this.httpClient.put<JobApplication>("http://localhost:3001/jobapplications/" + id, application)
+		return this.httpClient.put<JobApplication>("http://kornelius.local:3001/jobapplications/" + id, application)
 	}
 }
