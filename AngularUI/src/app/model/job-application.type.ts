@@ -6,6 +6,6 @@ export type JobApplication = {
 	deadline: string;
 	response: boolean;
 	interview: boolean;
-	done: false;
+	done: boolean;
 	link: string;
 }

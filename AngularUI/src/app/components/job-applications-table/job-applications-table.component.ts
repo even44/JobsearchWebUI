@@ -1,43 +1,46 @@
-import { Component, effect, input, signal } from '@angular/core';
+import { Component, effect, inject, input, signal } from '@angular/core';
 import { FormsModule, ValueChangeEvent } from '@angular/forms';
-import { JobApplication } from '../../model/JobApplication';
+import { JobApplication } from '../../model/job-application.type';
 import { NgFor, NgIf } from '@angular/common';
 import { JobApplicationService } from '../../services/job-application.service';
+import { JobApplicationTableItemComponent } from "../job-application-table-item/job-application-table-item.component";
+import { FilterJobApplicationsPipe } from '../../pipes/filter-job-applications.pipe';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-job-applications-table',
   standalone: true,
-  imports: [FormsModule, NgIf, NgFor],
+  imports: [FormsModule, NgIf, NgFor, JobApplicationTableItemComponent, FilterJobApplicationsPipe],
   templateUrl: './job-applications-table.component.html',
   styleUrl: './job-applications-table.component.css'
 })
 export class JobApplicationsTableComponent {
 
-	
+	jobApplicationService = inject(JobApplicationService)
 
-	constructor(private jobApplicationService: JobApplicationService){
+	constructor(){
 		this.showJobApplications()
 	}
 
 	jobApplications = signal<Array<JobApplication>>([])
+	searchTerm = signal<string>("")
 
 
 	
 
 	showJobApplications(){
 		this.jobApplicationService.getJobApplications()
-			.subscribe(data => this.jobApplications.set(data))
+		.pipe(
+			catchError((err) => {
+				console.log(err)
+				throw err;
+			})
+		).subscribe(data => this.jobApplications.set(data))
 	}
 
-	deleteJobApplication(id: number){
-		this.jobApplicationService.deleteJobApplication(id)
-			.subscribe()
-	}
+
 	
-	updateJobApplication(id: number){
-		
-		
-	}
+
 
 	getStats(event: any){
 		
@@ -58,7 +61,12 @@ export class JobApplicationsTableComponent {
 					application.done = event.target.checked
 				}
 				console.log('Field: %s Value: %s', event.target.value, event.target.checked)
-				this.jobApplicationService.updateJobApplication(event.target.id, application).subscribe(res => {
+				this.jobApplicationService.updateJobApplication(event.target.id, application).pipe(
+							catchError((err) => {
+								console.log(err)
+								throw err;
+							})
+						).subscribe(res => {
 					this.showJobApplications()
 				}
 					

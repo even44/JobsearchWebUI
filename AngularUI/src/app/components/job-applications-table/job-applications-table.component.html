@@ -1,4 +1,13 @@
 
+<form>
+	<label style="margin-right: 5px;" for="search">Filter Applications:</label>
+	<input 
+		id="search"
+		name="searchTerm"
+		[(ngModel)]="searchTerm"
+		placeholder="Search position or company..."
+	>
+</form>
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -13,30 +22,16 @@
 	</thead>
 	@if (jobApplications().length){
 		<tbody>
-			<tr *ngFor="let application of jobApplications()" class='{{application.response ? "table-success" : "table-warning"}}'>
-				<td>{{application.position}}</td>
-				<td>{{application.company}}</td>
-				<td>{{application.search_date}}</td>
-				<td>{{application.deadline}}</td>
-				<td>
-					<div class="input-group">
-						<div class="input-group-text">
-							<input class="form-check-input" (change)="getStats($event)" id="{{application.id}}" value="response" type="checkbox" checked="{{application.response ? 'checked' : ''}}">
-							<input class="form-check-input" (change)="getStats($event)" id="{{application.id}}" value="interview" type="checkbox" checked="{{application.interview ? 'checked' : ''}}">
-							<input class="form-check-input" (change)="getStats($event)" id="{{application.id}}" value="done" type="checkbox" checked="{{application.done ? 'checked' : ''}}">
-						</div>
-					</div>
-					
-					
-				</td>
-				<td><a href="{{application.link}}">Link</a></td>
-				<td><button class="btn btn-warning" (click)="updateJobApplication(application.id)">Update</button><button class="btn btn-danger" (click)="deleteJobApplication(application.id)">Delete</button></td>
-			</tr>
+			@for (application of jobApplications() | filterJobApplications : searchTerm(); track application.id) {
+				<tr app-job-application-table-item [jobApplication]="application"></tr>
+			}
 		</tbody>
 	}
 	@else {
-		<p>Loading... (or no applications exist)</p>
+		<p>Loading...</p>
 	}
+
+
 </table>
 <button class="btn btn-primary" (click)="showJobApplications()">Refresh!</button>
 

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { JobApplication } from "../../model/JobApplication";
+import { JobApplication } from "../../model/job-application.type";
 import { JobApplicationService } from '../../services/job-application.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-job-application-create',
@@ -15,7 +16,7 @@ export class JobApplicationCreateComponent {
 
 	jobApplicationGroup = new FormGroup({
 		id: new FormControl(0),
-		position: new FormControl('Postition'),
+		position: new FormControl('Position'),
 		company: new FormControl('Company'),
 		search_date: new FormControl('2024-10-15'),
 		deadline: new FormControl('2024-10-15'),
@@ -29,6 +30,11 @@ export class JobApplicationCreateComponent {
 	onSubmit(){
 		console.warn(this.jobApplicationGroup.value)
 		let jobApplication: JobApplication = <JobApplication>this.jobApplicationGroup.value
-		this.jobApplicationService.createJobApplication(jobApplication).subscribe()
+		this.jobApplicationService.createJobApplication(jobApplication).pipe(
+									catchError((err) => {
+										console.log(err)
+										throw err;
+									})
+								).subscribe()
 	}
 }

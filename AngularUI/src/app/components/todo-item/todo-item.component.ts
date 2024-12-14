@@ -11,6 +11,9 @@ import { TitleCasePipe, UpperCasePipe } from '@angular/common';
   styleUrl: './todo-item.component.css'
 })
 export class TodoItemComponent {
+
+	
+
 	todo = input.required<Todo>();
 	todoToggled = output<Todo>();
 

@@ -1,5 +1,5 @@
 import { inject, Injectable } from "@angular/core";
-import { JobApplication } from "../model/JobApplication";
+import { JobApplication } from "../model/job-application.type";
 import { HttpClient } from "@angular/common/http";
 
 @Injectable({providedIn: 'root'})

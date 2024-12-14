@@ -1,0 +1,34 @@
+
+	<td>{{jobApplication().position}}</td>
+	<td>{{jobApplication().company}}</td>
+	<td>{{jobApplication().search_date}}</td>
+	<td>{{jobApplication().deadline}}</td>
+	<td>
+		<div class="input-group">
+			<div class="input-group-text">
+				<input 
+					class="form-check-input"
+					id="application-{{jobApplication().id}}" 
+					type="checkbox" 
+					[checked]="jobApplication().response"
+					(change)="this.responseClicked()"
+				>
+				<input 
+					class="form-check-input"
+					id="application-{{jobApplication().id}}" 
+					type="checkbox" 
+					[checked]="jobApplication().interview"
+					(change)="this.interviewClicked()"
+				>
+				<input 
+					class="form-check-input"
+					id="application-{{jobApplication().id}}" 
+					type="checkbox" 
+					[checked]="jobApplication().done"
+					(change)="this.doneClicked()"
+				>			
+			</div>
+		</div>
+	</td>
+	<td><a href="{{jobApplication().link}}">Link</a></td>
+	<td><button class="btn btn-danger" (click)="deleteJobApplication(jobApplication().id)">Delete</button></td>
