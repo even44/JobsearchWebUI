@@ -13,6 +13,11 @@ export class JobApplicationService {
 		const url = `${this.baseUrl}/jobapplications`
 		return this.http.get<JobApplication[]>(url)
 	}
+	
+	getJobApplication(id: number){
+		const url = `${this.baseUrl}/jobapplications/${id}`
+		return this.http.get<JobApplication>(url)
+	}
 
 	createJobApplication(application: JobApplication ){
 		const url = `${this.baseUrl}/jobapplications`

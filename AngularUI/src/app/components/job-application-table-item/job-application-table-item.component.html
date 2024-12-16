@@ -31,4 +31,8 @@
 		</div>
 	</td>
 	<td><a href="{{jobApplication().link}}">Link</a></td>
-	<td><button class="btn btn-danger" (click)="deleteJobApplication(jobApplication().id)">Delete</button></td>
+	<td>
+		<button class="btn btn-danger" (click)="deleteJobApplication(jobApplication().id)">Delete</button>
+		<button class="btn btn-warning" routerLink="/update/{{jobApplication().id}}">Update</button>
+	</td>
+	
