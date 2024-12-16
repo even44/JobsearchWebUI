@@ -6,7 +6,7 @@ import { HttpClient } from "@angular/common/http";
 export class JobApplicationService {
 
 	http = inject(HttpClient)
-	baseUrl = `http://kornelius.local:3001`
+	baseUrl = `http://kornelius.lan:3001`
 
 
 	getJobApplications(){
