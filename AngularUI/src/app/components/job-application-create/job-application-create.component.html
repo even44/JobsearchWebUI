@@ -3,35 +3,35 @@
 <form [formGroup]="jobApplicationGroup" (ngSubmit)="onSubmit()">
 
 	<div class="input-group mb-3">
-		<span class="input-group-text" id="basic-addon1">Position</span>
-		<input class="form-control" id="position" type="text" formControlName="position">
-		<span class="input-group-text" id="basic-addon1">Company</span>
-		<input class="form-control" id="company" type="text" formControlName="company">
+		<label for="position" class="input-group-text" id="basic-addon1">Position</label>
+		<input placeholder="What will you do?" class="form-control" id="position" type="text" formControlName="position">
+		<label for="company" class="input-group-text" id="basic-addon1">Company</label>
+		<input placeholder="Where will you do it?" class="form-control" id="company" type="text" formControlName="company">
 	</div>
 
 	
 	<div class="input-group mb-3">
-		<span class="input-group-text" id="basic-addon1">Search date</span>
+		<label for="search_date" class="input-group-text" id="basic-addon1">Search date</label>
 		<input class="form-control" id="search_date" type="date" formControlName="search_date">
-		<span class="input-group-text" id="basic-addon1">Deadline</span>
+		<label for="deadline" class="input-group-text" id="basic-addon1">Deadline</label>
 		<input class="form-control" id="deadline" type="date" formControlName="deadline">
 	</div>
 	
 	<div class="input-group mb-3">
-		<span class="input-group-text" id="basic-addon1">Link</span>
-		<input class="form-control" id="link" type="url" formControlName="link">
+		<label for="link" class="input-group-text" id="basic-addon1">Link</label>
+		<input placeholder="https://example.link/verywellwrittenjoblisting" class="form-control" id="link" type="url" formControlName="link">
 	</div>
 	
 	<div class="input-group mb-3">
-		<span class="input-group-text" id="basic-addon1">Response</span>
+		<label for="response" class="input-group-text" id="basic-addon1">Response</label>
 		<div class="input-group-text">
 			<input class="form-check-input" id="response" type="checkbox" formControlName="response">
 		</div>
-		<span class="input-group-text" id="basic-addon1">Interview</span>
+		<label for="interview" class="input-group-text" id="basic-addon1">Interview</label>
 		<div class="input-group-text">
 			<input class="form-check-input" id="interview" type="checkbox" formControlName="interview">
 		</div>
-		<span class="input-group-text" id="basic-addon1">Done</span>
+		<label for="done" class="input-group-text" id="basic-addon1">Done</label>
 		<div class="input-group-text">
 			<input class="form-check-input" id="done" type="checkbox" formControlName="done">
 		</div>
