@@ -2,11 +2,12 @@ import { Component, inject, input, signal } from '@angular/core';
 import { JobApplication } from '../../model/job-application.type';
 import { JobApplicationService } from '../../services/job-application.service';
 import { catchError } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: '[app-job-application-table-item]',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './job-application-table-item.component.html',
   styleUrl: './job-application-table-item.component.css'
 })

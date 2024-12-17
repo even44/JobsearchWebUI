@@ -13,5 +13,11 @@ export const routes: Routes = [
 		loadComponent: () => {
 			return import('./pages/todos/todos.component').then((m) => m.TodosComponent)
 		},
+	},
+	{
+		path: 'update/:id',
+		loadComponent: () => {
+			return import('./pages/job-application-update-page/job-application-update-page.component').then((m) => m.JobApplicationUpdatePageComponent)
+		},
 	}
 ];

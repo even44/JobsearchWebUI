@@ -10,12 +10,13 @@ import { catchError } from 'rxjs';
 @Component({
   selector: 'app-job-applications-table',
   standalone: true,
-  imports: [FormsModule, NgIf, NgFor, JobApplicationTableItemComponent, FilterJobApplicationsPipe],
+  imports: [FormsModule, JobApplicationTableItemComponent, FilterJobApplicationsPipe],
   templateUrl: './job-applications-table.component.html',
   styleUrl: './job-applications-table.component.css'
 })
 export class JobApplicationsTableComponent {
 
+	
 	jobApplicationService = inject(JobApplicationService)
 
 	constructor(){
