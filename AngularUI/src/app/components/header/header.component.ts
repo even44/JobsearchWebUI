@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
 
-	title = signal("Jobbsøknader")
+	title = input("Title")
 	
 
 }
