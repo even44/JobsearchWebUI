@@ -5,5 +5,5 @@ export interface Environment {
   
 export const environment = {
     // apiUrl: 'http://localhost:6001'
-    apiUrl: '${API_URL}'
+    apiUrl: 'http://localhost:6001'
   }
