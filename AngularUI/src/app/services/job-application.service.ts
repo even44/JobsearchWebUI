@@ -1,12 +1,13 @@
 import { inject, Injectable } from "@angular/core";
 import { JobApplication } from "../model/job-application.type";
 import { HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment";
 
 @Injectable({providedIn: 'root'})
 export class JobApplicationService {
 
 	http = inject(HttpClient)
-	baseUrl = `http://jobbapi.even44.no`
+	baseUrl = environment.apiUrl
 
 
 	getJobApplications(){
