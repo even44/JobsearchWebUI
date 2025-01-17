@@ -9,7 +9,7 @@ COPY . .
 # install dependencies, matching package-lock.json
 RUN npm ci
 # Set API_URL env
-ENV API_URL=http://localhost:6001
+ENV API_URL="http://localhost:6001"
 # build the app
 RUN npm run build
 
