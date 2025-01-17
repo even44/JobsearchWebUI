@@ -4,6 +4,6 @@ export interface Environment {
   }
   
 export const environment = {
-    // apiUrl: 'http://localhost:6001'
-    apiUrl: 'http://localhost:6001'
+    // apiUrl: 'http://localhost:3001'
+    apiUrl: 'http://localhost:3001'
   }
