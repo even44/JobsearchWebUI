@@ -1,6 +1,6 @@
 
-	<td>{{jobApplication().position}}</td>
-	<td>{{jobApplication().company}}</td>
+	<td>{{jobApplication().ID}}</td>
+	<td>{{jobApplication().company.name}}</td>
 	<td>{{jobApplication().search_date}}</td>
 	<td>{{jobApplication().deadline}}</td>
 	<td>
@@ -8,21 +8,21 @@
 			<div class="input-group-text">
 				<input 
 					class="form-check-input"
-					id="application-{{jobApplication().id}}"
+					id="application-{{jobApplication().ID}}"
 					type="checkbox" 
 					[checked]="jobApplication().response"
 					(change)="this.responseClicked()"
 				>
 				<input 
 					class="form-check-input"
-					id="application-{{jobApplication().id}}" 
+					id="application-{{jobApplication().ID}}" 
 					type="checkbox" 
 					[checked]="jobApplication().interview"
 					(change)="this.interviewClicked()"
 				>
 				<input 
 					class="form-check-input"
-					id="application-{{jobApplication().id}}" 
+					id="application-{{jobApplication().ID}}" 
 					type="checkbox" 
 					[checked]="jobApplication().done"
 					(change)="this.doneClicked()"
@@ -32,7 +32,7 @@
 	</td>
 	<td><a href="{{jobApplication().link}}">Link</a></td>
 	<td>
-		<button class="btn btn-success" routerLink="/update/{{jobApplication().id}}">Edit</button>
-		<button class="btn btn-danger" (click)="deleteJobApplication(jobApplication().id)">Delete</button>
+		<button class="btn btn-success" routerLink="/update/{{jobApplication().ID}}">Edit</button>
+		<button class="btn btn-danger" (click)="deleteJobApplication(jobApplication().ID)">Delete</button>
 	</td>
 	

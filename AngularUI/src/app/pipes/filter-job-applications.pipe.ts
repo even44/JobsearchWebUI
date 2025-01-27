@@ -15,7 +15,7 @@ export class FilterJobApplicationsPipe implements PipeTransform {
 	return todos.filter(todo => {
 		return (
 			todo.position.toLowerCase().includes(text) ||
-			todo.company.toLowerCase().includes(text)
+			todo.company.name.toLowerCase().includes(text)
 		);
 
 	});

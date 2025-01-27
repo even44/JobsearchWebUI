@@ -31,22 +31,24 @@ export class JobApplicationUpdateComponent {
   
 
       jobApplicationGroup = new FormGroup({
-        id: new FormControl(0),
+        ID: new FormControl(0),
         position: new FormControl(''),
-        company: new FormControl(''),
-        search_date: new FormControl(''),
-        deadline: new FormControl(''),
+        company_id: new FormControl(0),
+        search_date: new FormControl(Date.now()),
+        deadline: new FormControl(Date.now()),
         response: new FormControl(false),
         interview: new FormControl(false),
         done: new FormControl(false),
         link: new FormControl(''),
-    
+        contact_id: new FormControl(0),
+        contact: new FormControl(),
+        company: new FormControl()
       })
     
       onSubmit(){
         console.warn(this.jobApplicationGroup.value)
         let jobApplication: JobApplication = <JobApplication>this.jobApplicationGroup.value
-        this.jobApplicationService.updateJobApplication(jobApplication.id,jobApplication).pipe(
+        this.jobApplicationService.updateJobApplication(jobApplication.ID,jobApplication).pipe(
                       catchError((err) => {
                         console.log(err)
                         throw err;

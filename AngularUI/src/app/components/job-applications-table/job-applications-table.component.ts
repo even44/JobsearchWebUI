@@ -36,7 +36,10 @@ export class JobApplicationsTableComponent {
 				console.log(err)
 				throw err;
 			})
-		).subscribe(data => this.jobApplications.set(data))
+		).subscribe(data => {
+			this.jobApplications.set(data)
+			console.log(this.jobApplications())
+		})
 	}
 
 
@@ -48,8 +51,8 @@ export class JobApplicationsTableComponent {
 		var application: JobApplication
 		for (let a in this.jobApplications()) {
 			let id: number = Number(event.target.id)
-			console.log(this.jobApplications()[a].id == id, this.jobApplications()[a].id, id, event.target.id)
-			if (this.jobApplications()[a].id == event.target.id){
+			console.log(this.jobApplications()[a].ID == id, this.jobApplications()[a].ID, id, event.target.id)
+			if (this.jobApplications()[a].ID == event.target.id){
 				console.log('Field: %s Value: %s', event.target.value, event.target.checked)
 				application = this.jobApplications()[a]
 				if (event.target.value == "response") {
@@ -77,7 +80,7 @@ export class JobApplicationsTableComponent {
 	}
 	
 	checkId(jobApplication: JobApplication){
-		return jobApplication.id == 1;
+		return jobApplication.ID == 1;
 	}
 
 	

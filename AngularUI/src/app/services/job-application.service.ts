@@ -11,27 +11,27 @@ export class JobApplicationService {
 
 
 	getJobApplications(){
-		const url = `${this.baseUrl}/jobapplications`
+		const url = `${this.baseUrl}/auth/jobapplications`
 		return this.http.get<JobApplication[]>(url)
 	}
 	
 	getJobApplication(id: number){
-		const url = `${this.baseUrl}/jobapplications/${id}`
-		return this.http.get<JobApplication>(url)
+		const url = `${this.baseUrl}/auth/jobapplications/`
+		return this.http.get<JobApplication>(url + id)
 	}
 
 	createJobApplication(application: JobApplication ){
-		const url = `${this.baseUrl}/jobapplications`
+		const url = `${this.baseUrl}/auth/jobapplications`
 		return this.http.post<JobApplication>(url, application)
 	}
 
 	deleteJobApplication(id: number) {
-		const url = `${this.baseUrl}/jobapplications/`
+		const url = `${this.baseUrl}/auth/jobapplications/`
 		return this.http.delete<JobApplication>(url + id)
 	}
 	
 	updateJobApplication(id: number, application: JobApplication){
-		const url = `${this.baseUrl}/jobapplications/`
+		const url = `${this.baseUrl}/auth/jobapplications/`
 		return this.http.put<JobApplication>(url + id, application)
 	}
 }

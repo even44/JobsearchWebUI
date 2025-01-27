@@ -4,6 +4,7 @@ import { JobApplicationService } from '../../services/job-application.service';
 import { catchError } from 'rxjs';
 import { RouterLink } from '@angular/router';
 
+
 @Component({
   selector: '[app-job-application-table-item]',
   standalone: true,
@@ -27,7 +28,7 @@ export class JobApplicationTableItemComponent {
 
 	responseClicked() {
 		this.jobApplication().response = !this.jobApplication().response
-		this.jobApplicationService.updateJobApplication(this.jobApplication().id, this.jobApplication()).pipe(
+		this.jobApplicationService.updateJobApplication(this.jobApplication().ID, this.jobApplication()).pipe(
 			catchError((err) => {
 				console.log(err)
 				throw err;
@@ -37,7 +38,7 @@ export class JobApplicationTableItemComponent {
 
 	interviewClicked(){
 		this.jobApplication().interview = !this.jobApplication().interview
-		this.jobApplicationService.updateJobApplication(this.jobApplication().id, this.jobApplication()).pipe(
+		this.jobApplicationService.updateJobApplication(this.jobApplication().ID, this.jobApplication()).pipe(
 			catchError((err) => {
 				console.log(err)
 				throw err;
@@ -47,7 +48,7 @@ export class JobApplicationTableItemComponent {
 
 	doneClicked(){
 		this.jobApplication().done = !this.jobApplication().done
-		this.jobApplicationService.updateJobApplication(this.jobApplication().id, this.jobApplication()).pipe(
+		this.jobApplicationService.updateJobApplication(this.jobApplication().ID, this.jobApplication()).pipe(
 			catchError((err) => {
 				console.log(err)
 				throw err;
