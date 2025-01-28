@@ -2,8 +2,8 @@ import { Contact } from "./contact.type"
 
 export type Company = {
     ID: number
-    UpdatedAt: Date
     name: string
+    user_id: number
     location: string
     status: string
     notes: string

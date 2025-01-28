@@ -3,17 +3,35 @@
 
 	<div class="input-group mb-3">
 		<label for="position" class="input-group-text" id="basic-addon1">Position</label>
-		<input placeholder="What will you do?" class="form-control" id="position" type="text" formControlName="position">
-		<label for="company" class="input-group-text" id="basic-addon1">Company</label>
-		<input placeholder="Where will you do it?" class="form-control" id="company" type="number" formControlName="company_id">
+		<select id="company" [value]="jobApplication()?.company_id" name="company" class="form-control" formControlName="company_id">
+			@if (companies().length){
+					@for (company of companies(); track company.ID) {
+						<option [ngValue]="company.ID">{{company.name + " - " + company.location}}</option>
+					}
+			}
+			@else {
+				<option value=0>No companies...</option>
+			}
+		</select>
+		<label for="contact" class="input-group-text" id="basic-addon1">Contact</label>
+		<select id="contact" [value]="jobApplication()?.contact_id" name="contact" class="form-control" formControlName="contact_id">
+			@if (contacts().length){
+					@for (contact of contacts(); track contact.ID) {
+						<option [ngValue]="contact.ID">{{contact.name}}</option>
+					}
+			}
+			@else {
+				<option value=0>No contacts...</option>
+			}
+		</select>
 	</div>
 
 	
 	<div class="input-group mb-3">
 		<label for="search_date" class="input-group-text" id="basic-addon1">Search date</label>
-		<input class="form-control" id="search_date" type="date" formControlName="search_date">
+		<input class="form-control" placeholder="YEAR-MO-DATHH:MM:SS.MSSZ" id="search_date" type="text" formControlName="search_date">
 		<label for="deadline" class="input-group-text" id="basic-addon1">Deadline</label>
-		<input class="form-control" id="deadline" type="date" formControlName="deadline">
+		<input class="form-control" placeholder="YEAR-MO-DATHH:MM:SS.MSSZ" id="deadline" type="text" formControlName="deadline">
 	</div>
 	
 	<div class="input-group mb-3">
