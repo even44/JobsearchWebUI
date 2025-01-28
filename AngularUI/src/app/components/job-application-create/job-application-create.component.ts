@@ -15,18 +15,22 @@ export class JobApplicationCreateComponent {
 	constructor(private jobApplicationService: JobApplicationService){}
 
 	jobApplicationGroup = new FormGroup({
-		id: new FormControl(0),
-		position: new FormControl(''),
-		company_id: new FormControl(0),
-		search_date: new FormControl(Date.now()),
-		deadline: new FormControl(Date.now()),
-		response: new FormControl(false),
-		interview: new FormControl(false),
-		done: new FormControl(false),
-		link: new FormControl(''),
-		contact_id: new FormControl(0),
+        ID: new FormControl(0),
+		CreatedAt: new FormControl(``),
+		UpdatedAt: new FormControl(``),
+		DeletedAt: new FormControl(``),
+		user_id: new FormControl(0),
+        position: new FormControl(''),
+        company_id: new FormControl(0),
+		company: new FormControl(),
 		contact: new FormControl(),
-		company: new FormControl()
+        search_date: new FormControl(Date.now()),
+        deadline: new FormControl(Date.now()),
+        response: new FormControl(false),
+        interview: new FormControl(false),
+        done: new FormControl(false),
+        link: new FormControl(''),
+        contact_id: new FormControl(0),
 
 
 	})

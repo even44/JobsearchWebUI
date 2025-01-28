@@ -32,8 +32,14 @@ export class JobApplicationUpdateComponent {
 
       jobApplicationGroup = new FormGroup({
         ID: new FormControl(0),
+		CreatedAt: new FormControl(``),
+		UpdatedAt: new FormControl(``),
+		DeletedAt: new FormControl(``),
+		user_id: new FormControl(0),
         position: new FormControl(''),
         company_id: new FormControl(0),
+		company: new FormControl(),
+		contact: new FormControl(),
         search_date: new FormControl(Date.now()),
         deadline: new FormControl(Date.now()),
         response: new FormControl(false),
@@ -41,8 +47,6 @@ export class JobApplicationUpdateComponent {
         done: new FormControl(false),
         link: new FormControl(''),
         contact_id: new FormControl(0),
-        contact: new FormControl(),
-        company: new FormControl()
       })
     
       onSubmit(){
