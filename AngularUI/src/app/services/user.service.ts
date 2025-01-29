@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { environment } from "../../environments/environment";
 import { UserLogin } from "../model/user-login.type";
+import { UserLoginResponse } from "../model/user-login-response";
 
 
 
@@ -9,6 +10,9 @@ import { UserLogin } from "../model/user-login.type";
 export class UserService {
     http = inject(HttpClient)
     baseUrl = environment.apiUrl
+
+    userLoginResponse: UserLoginResponse | null = null
+
 
     signUp(userLogin: UserLogin){
         const url = `${this.baseUrl}/public/signup`
@@ -18,6 +22,10 @@ export class UserService {
     login(userLogin: UserLogin){
         const url = `${this.baseUrl}/public/login`
         return this.http.post(url, userLogin)
+    }
+
+    logOut(){
+        this.userLoginResponse = null
     }
 
 }
