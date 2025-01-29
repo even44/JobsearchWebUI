@@ -23,12 +23,8 @@ export class LoginFormComponent {
     login(){
       console.warn(this.loginGroup.value.email)
       let userLogin: UserLogin = <UserLogin>this.loginGroup.value
-      this.loginService.login(userLogin).pipe(
-        catchError((err) => {
-          console.log(err)
-          throw err;
-        })
-      ).subscribe()
+      this.loginService.login(userLogin)
+     
     }
 
     
