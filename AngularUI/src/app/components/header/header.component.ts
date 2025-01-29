@@ -1,5 +1,6 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,11 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
 
-	title = input("Title")
+	userService = inject(UserService)
+  
+  title = input("Title")
+
+
 	
 
 }

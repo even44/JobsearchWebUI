@@ -9,7 +9,7 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [JobApplicationsTableComponent, JobApplicationCreateComponent, LoginFormComponent],
+  imports: [LoginFormComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
