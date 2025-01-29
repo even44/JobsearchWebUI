@@ -1,4 +1,6 @@
-<app-login-form></app-login-form>
+@if(userService.userData() == null) {<app-login-form></app-login-form>}
+@else {<h3>Welcome {{userService.userData()?.Email}}</h3> <button (click)="userService.logOut()">Logout</button>
 <app-job-application-create></app-job-application-create>
 <app-job-applications-table></app-job-applications-table>
+}
 

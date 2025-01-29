@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { UserLogin } from '../../model/user-login.type';
@@ -13,7 +13,8 @@ import { HttpResponse } from '@angular/common/http';
   styleUrl: './login-form.component.css'
 })
 export class LoginFormComponent {
-    loginService = inject(UserService)
+    userService = inject(UserService)
+    loginState = signal(true)
 
     loginGroup = new FormGroup({
       email: new FormControl(``),
@@ -23,8 +24,17 @@ export class LoginFormComponent {
     login(){
       console.warn(this.loginGroup.value.email)
       let userLogin: UserLogin = <UserLogin>this.loginGroup.value
-      this.loginService.login(userLogin)
-     
+      this.userService.login(userLogin)
+    }
+
+    register(){
+      console.warn(this.loginGroup.value.email)
+      let userLogin: UserLogin = <UserLogin>this.loginGroup.value
+      this.userService.signUp(userLogin)
+    }
+
+    switchState(){
+      this.loginState.set(!this.loginState())
     }
 
     
