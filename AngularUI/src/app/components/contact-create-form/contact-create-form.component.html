@@ -1,0 +1,28 @@
+<form [formGroup]="contactGroup" (ngSubmit)="onSubmit()">
+
+	<div class="input-group mb-3">
+		<label for="name" class="input-group-text" id="basic-addon1">Name</label>
+		<input placeholder="Name" class="form-control" id="position" type="text" formControlName="name">
+		<label for="company" class="input-group-text" id="basic-addon1">Company</label>
+		<select id="company" name="company" class="form-control" formControlName="company_id">
+			@if (companies().length){
+					@for (company of companies(); track company.ID) {
+						<option [ngValue]="company.ID">{{company.name + " - " + company.location}}</option>
+					}
+			}
+			@else {
+				<option value=0>No companies...</option>
+			}
+		</select>
+	</div>
+
+	
+	<div class="input-group mb-3">
+		<label for="email" class="input-group-text" id="basic-addon1">Email</label>
+		<input class="form-control" placeholder="Email" id="email" type="email" formControlName="email">
+		<label for="phone" class="input-group-text" id="basic-addon1">Phone</label>
+		<input class="form-control" placeholder="XXXXXXXX" id="phone" type="number" formControlName="phone">
+	</div>
+
+	<button class="btn btn-success" type="submit" [disabled]="!contactGroup.valid">Submit</button>
+</form>

@@ -1,0 +1,36 @@
+
+<form>
+	<label style="margin-right: 5px;" for="search">Filter Companies:</label>
+	<input 
+		id="search"
+		name="searchTerm"
+		[(ngModel)]="searchTerm"
+		placeholder="Search position or company..."
+	>
+</form>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">Company</th>
+			<th scope="col">Location</th>
+			<th scope="col">Status</th>
+			<th scope="col">Website</th>
+            <th scope="col">Actions</th>
+			<th scope="col">Notes</th>
+		</tr>
+	</thead>
+	@if (companies().length){
+		<tbody>
+			@for (company of companies() | filterCompanies : searchTerm(); track company.ID) {
+				<tr app-company-table-item [company]="company"></tr>
+			}
+		</tbody>
+	}
+	@else {
+		<p>Loading...</p>
+	}
+
+
+</table>
+<button class="btn btn-primary" (click)="showCompanies()">Refresh!</button>
+

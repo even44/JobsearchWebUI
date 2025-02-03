@@ -1,7 +1,6 @@
-import { Component, effect, inject, input, signal } from '@angular/core';
-import { FormsModule, ValueChangeEvent } from '@angular/forms';
+import { Component, inject, signal } from '@angular/core';
+import { FormsModule} from '@angular/forms';
 import { JobApplication } from '../../model/job-application.type';
-import { NgFor, NgIf } from '@angular/common';
 import { JobApplicationService } from '../../services/job-application.service';
 import { JobApplicationTableItemComponent } from "../job-application-table-item/job-application-table-item.component";
 import { FilterJobApplicationsPipe } from '../../pipes/filter-job-applications.pipe';
@@ -79,9 +78,7 @@ export class JobApplicationsTableComponent {
 		}
 	}
 	
-	checkId(jobApplication: JobApplication){
-		return jobApplication.ID == 1;
-	}
+
 
 	
 

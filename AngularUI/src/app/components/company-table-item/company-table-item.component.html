@@ -1,0 +1,11 @@
+
+<td>{{company().name}}</td>
+<td>{{company().location}}</td>
+<td>{{company().status}}</td>
+<td><a href="{{company().website}}">Link</a></td>
+<td>
+    <button class="btn btn-success" routerLink="/companies/update/{{company().ID}}">Edit</button>
+    <button class="btn btn-danger" (click)="deleteCompany(company().ID)">Delete</button>
+</td>
+<td>{{company().notes}}</td>
+

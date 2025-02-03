@@ -27,9 +27,21 @@ export const routes: Routes = [
 		},
 	},
 	{
-		path: 'update/:id',
+		path: 'applications/update/:id',
 		loadComponent: () => {
 			return import('./pages/job-application-update-page/job-application-update-page.component').then((m) => m.JobApplicationUpdatePageComponent)
+		},
+	},
+	{
+		path: 'contacts/update/:id',
+		loadComponent: () => {
+			return import('./pages/contact-update/contact-update.component').then((m) => m.ContactUpdateComponent)
+		},
+	},
+	{
+		path: 'companies/update/:id',
+		loadComponent: () => {
+			return import('./pages/company-update/company-update.component').then((m) => m.CompanyUpdateComponent)
 		},
 	},
 	{

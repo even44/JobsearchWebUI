@@ -97,6 +97,6 @@ export class JobApplicationUpdateComponent {
                         throw err;
                       })
                     ).subscribe()
-        this.router.navigate(['/'])
+        this.router.navigate(['/applications'])
       }
 }

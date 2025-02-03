@@ -18,7 +18,6 @@ export class UserService {
 
     userData = signal<UserLoginResponse | null>(null)
 
-
     signUp(userLogin: UserLogin){
         const url = `${this.baseUrl}/public/signup`
         return this.http.post<UserLogin>(url, userLogin).pipe(
@@ -40,8 +39,9 @@ export class UserService {
     }
 
     logOut(){
+        console.log("Loggin out")
         this.userData.set(null)
-        this.cookieService.delete("Authorization", "/auth")
+        this.cookieService.delete("Authorization")
     }
 
 }

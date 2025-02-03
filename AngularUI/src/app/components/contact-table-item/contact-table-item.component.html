@@ -1,0 +1,10 @@
+
+<td>{{contact().name}}</td>
+<td>{{contact().company.name}}</td>
+<td>{{contact().email}}</td>
+<td>{{contact().phone}}</td>
+<td>
+    <button class="btn btn-success" routerLink="/contacts/update/{{contact().ID}}">Edit</button>
+    <button class="btn btn-danger" (click)="deleteContact(contact().ID)">Delete</button>
+</td>
+
