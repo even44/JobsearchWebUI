@@ -5,5 +5,5 @@ export interface Environment {
   
 export const environment = {
     // apiUrl: 'http://localhost:3001'
-    apiUrl: 'https://jobdapidev.even44.no'
+    apiUrl: 'http://jobbdapidev.even44.no'
   }
