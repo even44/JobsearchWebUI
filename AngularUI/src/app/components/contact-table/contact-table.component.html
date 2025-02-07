@@ -1,0 +1,35 @@
+
+<form>
+	<label style="margin-right: 5px;" for="search">Filter Contacts:</label>
+	<input
+		id="search"
+		name="searchTerm"
+		[(ngModel)]="searchTerm"
+		placeholder="Search name or company..."
+	>
+</form>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Company</th>
+			<th scope="col">Email</th>
+			<th scope="col">Phone</th>
+			<th scope="col">Actions</th>
+		</tr>
+	</thead>
+	@if (contacts().length){
+		<tbody>
+			@for (contact of contacts() | filterContacts : searchTerm(); track contact.ID) {
+				<tr app-contact-table-item [contact]="contact"></tr>
+			}
+		</tbody>
+	}
+	@else {
+		<p>Loading...</p>
+	}
+
+
+</table>
+<button class="btn btn-primary" (click)="showContacts()">Refresh!</button>
+

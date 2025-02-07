@@ -1,7 +1,6 @@
-import { Component, effect, inject, input, signal } from '@angular/core';
-import { FormsModule, ValueChangeEvent } from '@angular/forms';
+import { Component, inject, signal } from '@angular/core';
+import { FormsModule} from '@angular/forms';
 import { JobApplication } from '../../model/job-application.type';
-import { NgFor, NgIf } from '@angular/common';
 import { JobApplicationService } from '../../services/job-application.service';
 import { JobApplicationTableItemComponent } from "../job-application-table-item/job-application-table-item.component";
 import { FilterJobApplicationsPipe } from '../../pipes/filter-job-applications.pipe';
@@ -36,7 +35,10 @@ export class JobApplicationsTableComponent {
 				console.log(err)
 				throw err;
 			})
-		).subscribe(data => this.jobApplications.set(data))
+		).subscribe(data => {
+			this.jobApplications.set(data)
+			console.log(this.jobApplications())
+		})
 	}
 
 
@@ -48,8 +50,8 @@ export class JobApplicationsTableComponent {
 		var application: JobApplication
 		for (let a in this.jobApplications()) {
 			let id: number = Number(event.target.id)
-			console.log(this.jobApplications()[a].id == id, this.jobApplications()[a].id, id, event.target.id)
-			if (this.jobApplications()[a].id == event.target.id){
+			console.log(this.jobApplications()[a].ID == id, this.jobApplications()[a].ID, id, event.target.id)
+			if (this.jobApplications()[a].ID == event.target.id){
 				console.log('Field: %s Value: %s', event.target.value, event.target.checked)
 				application = this.jobApplications()[a]
 				if (event.target.value == "response") {
@@ -76,9 +78,7 @@ export class JobApplicationsTableComponent {
 		}
 	}
 	
-	checkId(jobApplication: JobApplication){
-		return jobApplication.id == 1;
-	}
+
 
 	
 

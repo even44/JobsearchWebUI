@@ -1,36 +1,37 @@
 import { inject, Injectable } from "@angular/core";
 import { JobApplication } from "../model/job-application.type";
 import { HttpClient } from "@angular/common/http";
+import { environment } from "../../environments/environment";
 
 @Injectable({providedIn: 'root'})
 export class JobApplicationService {
 
 	http = inject(HttpClient)
-	baseUrl = `http://jobbapi.even44.no`
+	baseUrl = environment.apiUrl
 
 
 	getJobApplications(){
-		const url = `${this.baseUrl}/jobapplications`
+		const url = `${this.baseUrl}/auth/jobapplications`
 		return this.http.get<JobApplication[]>(url)
 	}
 	
 	getJobApplication(id: number){
-		const url = `${this.baseUrl}/jobapplications/${id}`
-		return this.http.get<JobApplication>(url)
+		const url = `${this.baseUrl}/auth/jobapplications/`
+		return this.http.get<JobApplication>(url + id)
 	}
 
 	createJobApplication(application: JobApplication ){
-		const url = `${this.baseUrl}/jobapplications`
+		const url = `${this.baseUrl}/auth/jobapplications`
 		return this.http.post<JobApplication>(url, application)
 	}
 
 	deleteJobApplication(id: number) {
-		const url = `${this.baseUrl}/jobapplications/`
+		const url = `${this.baseUrl}/auth/jobapplications/`
 		return this.http.delete<JobApplication>(url + id)
 	}
 	
 	updateJobApplication(id: number, application: JobApplication){
-		const url = `${this.baseUrl}/jobapplications/`
+		const url = `${this.baseUrl}/auth/jobapplications/`
 		return this.http.put<JobApplication>(url + id, application)
 	}
 }

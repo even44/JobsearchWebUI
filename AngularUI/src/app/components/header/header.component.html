@@ -1,8 +1,13 @@
 <header>
 	<nav>
-		<span routerLink="/">{{title()}}</span>
+		@if(userService.userData() == null){<span routerLink="/">Home</span>}
+		@else{<span routerLink="/">{{userService.userData()?.Email}}</span>}
+		@if(userService.userData() == null){<span routerLink="/login">Applications</span>}@else{<span routerLink="/applications">Applications</span>}
+		@if(userService.userData() == null){<span routerLink="/login">Companies</span>}@else{<span routerLink="/companies">Companies</span>}
+		@if(userService.userData() == null){<span routerLink="/login">Contacts</span>}@else{<span routerLink="/contacts">Contacts</span>}
 		<ul>
-			
+			@if(userService.userData() == null){<li routerLink="login">Login</li>}
+			@else {<li (click)="userService.logOut()">Logout</li>}
 		</ul>
 	</nav>
 </header>

@@ -1,0 +1,24 @@
+<form [formGroup]="companyGroup" (ngSubmit)="onSubmit()">
+
+	<div class="input-group mb-3">
+		<label for="name" class="input-group-text" id="basic-addon1">Company</label>
+		<input placeholder="Firm" class="form-control" id="position" type="text" formControlName="name">
+		<label for="location" class="input-group-text" id="basic-addon1">Location</label>
+		<input placeholder="Location" id="location" name="location" class="form-control" formControlName="location">
+	</div>
+
+	
+	<div class="input-group mb-3">
+		<label for="status" class="input-group-text" id="basic-addon1">Status</label>
+		<input class="form-control" placeholder="Status" id="status" type="text" formControlName="status">
+		<label for="website" class="input-group-text" id="basic-addon1">Website</label>
+		<input class="form-control" placeholder="https://example.link/" id="website" type="url" formControlName="website">
+	</div>
+	
+	<div class="input-group mb-3">
+		<label for="notes" class="input-group-text" id="basic-addon1">Notes</label>
+		<textarea placeholder="Notes..." class="form-control" id="link" type="url" formControlName="notes"></textarea>
+	</div>
+
+	<button class="btn btn-success" type="submit" [disabled]="!companyGroup.valid">Submit</button>
+</form>
