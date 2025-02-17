@@ -19,9 +19,9 @@
 			<th scope="col">Notes</th>
 		</tr>
 	</thead>
-	@if (companies().length){
+	@if (companyService.companies().length){
 		<tbody>
-			@for (company of companies() | filterCompanies : searchTerm(); track company.ID) {
+			@for (company of companyService.companies() | filterCompanies : searchTerm(); track company.ID) {
 				<tr app-company-table-item [company]="company"></tr>
 			}
 		</tbody>

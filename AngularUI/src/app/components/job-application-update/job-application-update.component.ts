@@ -25,8 +25,7 @@ export class JobApplicationUpdateComponent {
     jobApplicationId = input.required<number>()
 
     jobApplication = signal<JobApplication | null>(null)
-    companies = signal<Array<Company>>([])
-    contacts = signal<Array<Contact>>([])
+
 
 
 
@@ -48,28 +47,10 @@ export class JobApplicationUpdateComponent {
   
     updateCompanies(){
       this.companyService.getCompanies()
-      .pipe(
-        catchError((err) => {
-          console.log(err)
-          throw err;
-        })
-      ).subscribe(data => {
-        this.companies.set(data)
-        console.log(this.companies())
-      })
     }
   
     updateContacts(){
       this.contactService.getContacts()
-      .pipe(
-        catchError((err) => {
-          console.log(err)
-          throw err;
-        })
-      ).subscribe(data => {
-        this.contacts.set(data)
-        console.log(this.contacts())
-      })
     }
 
       jobApplicationGroup = new FormGroup({

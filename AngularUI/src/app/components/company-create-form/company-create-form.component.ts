@@ -37,7 +37,9 @@ export class CompanyCreateFormComponent {
                     console.log(err)
                     throw err;
                   })
-                ).subscribe()
+                ).subscribe(() => {
+                  this.companyService.getCompanies()
+                })
   }
 
 }

@@ -3,9 +3,11 @@
 
 	<div class="input-group mb-3">
 		<label for="position" class="input-group-text" id="basic-addon1">Position</label>
-		<select id="company" [value]="jobApplication()?.company_id" name="company" class="form-control" formControlName="company_id">
-			@if (companies().length){
-					@for (company of companies(); track company.ID) {
+		<input placeholder="What will you do?" class="form-control" id="position" type="text" formControlName="position">
+		<label for="company" class="input-group-text" id="basic-addon1">Company</label>
+		<select id="company" name="company" class="form-control" formControlName="company_id">
+			@if (companyService.companies().length){
+					@for (company of companyService.companies(); track company.ID) {
 						<option [ngValue]="company.ID">{{company.name + " - " + company.location}}</option>
 					}
 			}
@@ -14,9 +16,9 @@
 			}
 		</select>
 		<label for="contact" class="input-group-text" id="basic-addon1">Contact</label>
-		<select id="contact" [value]="jobApplication()?.contact_id" name="contact" class="form-control" formControlName="contact_id">
-			@if (contacts().length){
-					@for (contact of contacts(); track contact.ID) {
+		<select id="contact" name="contact" class="form-control" formControlName="contact_id">
+			@if (contactService.contacts().length){
+					@for (contact of contactService.contacts(); track contact.ID) {
 						<option [ngValue]="contact.ID">{{contact.name}}</option>
 					}
 			}
@@ -29,9 +31,9 @@
 	
 	<div class="input-group mb-3">
 		<label for="search_date" class="input-group-text" id="basic-addon1">Search date</label>
-		<input class="form-control" placeholder="YEAR-MO-DATHH:MM:SS.MSSZ" id="search_date" type="text" formControlName="search_date">
+		<input class="form-control" placeholder="YEAR-MO-DA" id="search_date" type="date" formControlName="search_date">
 		<label for="deadline" class="input-group-text" id="basic-addon1">Deadline</label>
-		<input class="form-control" placeholder="YEAR-MO-DATHH:MM:SS.MSSZ" id="deadline" type="text" formControlName="deadline">
+		<input class="form-control" placeholder="YEAR-MO-DA" id="deadline" type="date" formControlName="deadline">
 	</div>
 	
 	<div class="input-group mb-3">

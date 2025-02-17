@@ -1,7 +1,8 @@
-import { inject, Injectable } from "@angular/core";
+import { inject, Injectable, signal } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { Company } from "../model/company.type";
+import { catchError } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class CompanyService {
@@ -9,10 +10,19 @@ export class CompanyService {
 	http = inject(HttpClient)
 	baseUrl = environment.apiUrl
 
+	companies = signal<Array<Company>>([])
 
 	getCompanies(){
 		const url = `${this.baseUrl}/auth/companies`
-		return this.http.get<Company[]>(url)
+		this.http.get<Company[]>(url).pipe(
+			catchError((err) => {
+				console.log(err)
+				throw err;
+			})
+				).subscribe(data => {
+					this.companies.set(data)
+					console.log(this.companies())
+				})
 	}
 	
 	getCompany(id: number){

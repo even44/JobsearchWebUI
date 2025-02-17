@@ -23,7 +23,9 @@ export class JobApplicationTableItemComponent {
 					console.log(err)
 					throw err;
 				})
-			).subscribe()
+			).subscribe(() => {
+				this.jobApplicationService.getJobApplications()
+			})
 	}
 
 	responseClicked() {

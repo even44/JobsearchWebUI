@@ -1,7 +1,8 @@
-import { inject, Injectable } from "@angular/core";
+import { inject, Injectable, signal } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { Contact } from "../model/contact.type";
+import { catchError } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class ContactService {
@@ -9,10 +10,19 @@ export class ContactService {
 	http = inject(HttpClient)
 	baseUrl = environment.apiUrl
 
+	contacts = signal<Array<Contact>>([])
 
 	getContacts(){
 		const url = `${this.baseUrl}/auth/contacts`
-		return this.http.get<Contact[]>(url)
+		this.http.get<Contact[]>(url).pipe(
+			catchError((err) => {
+				console.log(err)
+				throw err;
+			})
+				).subscribe(data => {
+					this.contacts.set(data)
+					console.log(this.contacts())
+				})
 	}
 	
 	getContact(id: number){

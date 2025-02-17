@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserLogin } from '../../model/user-login.type';
 import { catchError } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
@@ -17,8 +17,8 @@ export class LoginFormComponent {
     loginState = signal(true)
 
     loginGroup = new FormGroup({
-      email: new FormControl(``),
-      password: new FormControl(``)
+      email: new FormControl(``, [Validators.required, Validators.email]),
+      password: new FormControl(``, [Validators.required, Validators.minLength(8)])
     })
 
     login(){
@@ -33,9 +33,6 @@ export class LoginFormComponent {
       this.userService.signUp(userLogin)
     }
 
-    switchState(){
-      this.loginState.set(!this.loginState())
-    }
 
     
 

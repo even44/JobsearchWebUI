@@ -21,6 +21,8 @@ export class CompanyTableItemComponent {
           console.log(err)
           throw err;
         })
-      ).subscribe()
+      ).subscribe(()=>{
+        this.jobApplicationService.getCompanies()
+      })
   }
 }
