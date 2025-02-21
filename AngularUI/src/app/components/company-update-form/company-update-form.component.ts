@@ -22,8 +22,7 @@ export class CompanyUpdateFormComponent {
   companyId = input.required<number>()
 
   company = signal<Company | null>(null)
-  companies = signal<Array<Company>>([])
-  contacts = signal<Array<Contact>>([])
+
 
   ngOnInit(){
     this.companyService.getCompany(this.companyId())
@@ -44,28 +43,10 @@ export class CompanyUpdateFormComponent {
 
     updateCompanies(){
       this.companyService.getCompanies()
-      .pipe(
-        catchError((err) => {
-          console.log(err)
-          throw err;
-        })
-      ).subscribe(data => {
-        this.companies.set(data)
-        console.log(this.companies())
-      })
     }
 
     updateContacts(){
       this.contactService.getContacts()
-      .pipe(
-        catchError((err) => {
-          console.log(err)
-          throw err;
-        })
-      ).subscribe(data => {
-        this.contacts.set(data)
-        console.log(this.contacts())
-      })
     }
 
     companyGroup = new FormGroup({

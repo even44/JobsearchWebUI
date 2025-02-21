@@ -18,9 +18,9 @@
 			<th scope="col">Actions</th>
 		</tr>
 	</thead>
-	@if (contacts().length){
+	@if (contactService.contacts()){
 		<tbody>
-			@for (contact of contacts() | filterContacts : searchTerm(); track contact.ID) {
+			@for (contact of contactService.contacts() | filterContacts : searchTerm(); track contact.ID) {
 				<tr app-contact-table-item [contact]="contact"></tr>
 			}
 		</tbody>

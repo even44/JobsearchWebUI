@@ -20,9 +20,9 @@
 			<th scope="col">Actions</th>
 		</tr>
 	</thead>
-	@if (jobApplications().length){
+	@if (this.jobApplicationService.jobApplications().length){
 		<tbody>
-			@for (application of jobApplications() | filterJobApplications : searchTerm(); track application.ID) {
+			@for (application of this.jobApplicationService.jobApplications() | filterJobApplications : searchTerm(); track application.ID) {
 				<tr app-job-application-table-item [jobApplication]="application"></tr>
 			}
 		</tbody>

@@ -21,6 +21,8 @@ export class ContactTableItemComponent {
           console.log(err)
           throw err;
         })
-      ).subscribe()
+      ).subscribe(() => {
+        this.contactService.getContacts()
+      })
   }
 }

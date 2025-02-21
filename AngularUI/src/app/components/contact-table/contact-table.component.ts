@@ -19,7 +19,6 @@ export class ContactTableComponent {
 			this.showContacts()
 		}
 	
-		contacts = signal<Array<Contact>>([])
 		searchTerm = signal<string>("")
 	
 	
@@ -27,15 +26,6 @@ export class ContactTableComponent {
 	
 		showContacts(){
 			this.contactService.getContacts()
-			.pipe(
-				catchError((err) => {
-					console.log(err)
-					throw err;
-				})
-			).subscribe(data => {
-				this.contacts.set(data)
-				console.log(this.contacts())
-			})
 		}
 	
 	

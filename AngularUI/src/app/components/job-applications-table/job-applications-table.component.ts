@@ -22,7 +22,6 @@ export class JobApplicationsTableComponent {
 		this.showJobApplications()
 	}
 
-	jobApplications = signal<Array<JobApplication>>([])
 	searchTerm = signal<string>("")
 
 
@@ -30,15 +29,6 @@ export class JobApplicationsTableComponent {
 
 	showJobApplications(){
 		this.jobApplicationService.getJobApplications()
-		.pipe(
-			catchError((err) => {
-				console.log(err)
-				throw err;
-			})
-		).subscribe(data => {
-			this.jobApplications.set(data)
-			console.log(this.jobApplications())
-		})
 	}
 
 
@@ -48,12 +38,12 @@ export class JobApplicationsTableComponent {
 	getStats(event: any){
 		
 		var application: JobApplication
-		for (let a in this.jobApplications()) {
+		for (let a in this.jobApplicationService.jobApplications()) {
 			let id: number = Number(event.target.id)
-			console.log(this.jobApplications()[a].ID == id, this.jobApplications()[a].ID, id, event.target.id)
-			if (this.jobApplications()[a].ID == event.target.id){
+			console.log(this.jobApplicationService.jobApplications()[a].ID == id, this.jobApplicationService.jobApplications()[a].ID, id, event.target.id)
+			if (this.jobApplicationService.jobApplications()[a].ID == event.target.id){
 				console.log('Field: %s Value: %s', event.target.value, event.target.checked)
-				application = this.jobApplications()[a]
+				application = this.jobApplicationService.jobApplications()[a]
 				if (event.target.value == "response") {
 					application.response = event.target.checked
 				}

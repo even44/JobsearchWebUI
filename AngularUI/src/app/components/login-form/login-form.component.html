@@ -1,6 +1,6 @@
 
 @if (this.loginState()){
-    <form  [formGroup]="loginGroup" (ngSubmit)="login()">
+    <form style="display: inline;" [formGroup]="loginGroup" (ngSubmit)="login()">
         <div class="input-group mb-3">
             <label for="email" class="input-group-text" id="basic-addon1">Email</label>
             <input placeholder="example@email.foo" class="form-control" id="email" type="email" formControlName="email">
@@ -8,6 +8,6 @@
             <input placeholder="*******" class="form-control" id="password" type="password" formControlName="password">
         </div>
         <button class="btn btn-success" style="margin-right: 5px;" type="submit" [disabled]="!loginGroup.valid">Login</button>
-        <button class="btn btn-success" [disabled]="!loginGroup.valid" (click)="register()">Register</button>
     </form>
+    <button class="btn btn-success" [disabled]="!loginGroup.valid" (click)="register()">Register</button>
 }

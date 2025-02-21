@@ -17,8 +17,6 @@ export class ContactCreateFormComponent {
   contactService = inject(ContactService)
   companyService = inject(CompanyService)
 
-  companies = signal<Array<Company>>([])
-  contacts = signal<Array<Contact>>([])
 
   contactGroup = new FormGroup({
         ID: new FormControl(0),
@@ -36,28 +34,10 @@ export class ContactCreateFormComponent {
     
       updateCompanies(){
         this.companyService.getCompanies()
-        .pipe(
-          catchError((err) => {
-            console.log(err)
-            throw err;
-          })
-        ).subscribe(data => {
-          this.companies.set(data)
-          console.log(this.companies())
-        })
       }
     
       updateContacts(){
         this.contactService.getContacts()
-        .pipe(
-          catchError((err) => {
-            console.log(err)
-            throw err;
-          })
-        ).subscribe(data => {
-          this.contacts.set(data)
-          console.log(this.contacts())
-        })
       }
 
 
@@ -69,7 +49,9 @@ export class ContactCreateFormComponent {
                     console.log(err)
                     throw err;
                   })
-                ).subscribe()
+                ).subscribe(() => {
+                  this.contactService.getContacts()
+                })
   }
 
 }

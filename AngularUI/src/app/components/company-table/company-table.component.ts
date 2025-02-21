@@ -15,11 +15,10 @@ import { CompanyTableItemComponent } from '../company-table-item/company-table-i
 export class CompanyTableComponent {
 	companyService = inject(CompanyService)
 	
-		constructor(){
+		ngOnInit(){
 			this.showCompanies()
 		}
 	
-		companies = signal<Array<Company>>([])
 		searchTerm = signal<string>("")
 	
 	
@@ -27,15 +26,6 @@ export class CompanyTableComponent {
 	
 		showCompanies(){
 			this.companyService.getCompanies()
-			.pipe(
-				catchError((err) => {
-					console.log(err)
-					throw err;
-				})
-			).subscribe(data => {
-				this.companies.set(data)
-				console.log(this.companies())
-			})
 		}
 	
 	
