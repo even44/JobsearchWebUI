@@ -1,13 +1,18 @@
-@if(userService.userData() != null)
-{
-    <h3>Welcome {{userService.userData()?.Email}}, homepage is currently under construction</h3>
-    <br>
-    <img src="/harald.png">
-    <br>
-    <button class="btn btn-danger" (click)="userService.logOut()">Logout</button>
-}
-@else 
-{
-    <h1>Welcome, homepage is currently under construction</h1>
-    <img src="/harald.png"> 
-}
+
+<div class="page">
+    @if(userService.userData() != null)
+    {
+    
+        <h1>Welcome!</h1>
+        <p id="name">Logged in as: {{userService.userData()?.Email}}</p>
+        <img id="harald" src="/harald.png">
+    
+       
+    }
+    @else 
+    {
+        <h1>Welcome, log in or register to use this site :)</h1>
+        <img id="harald" src="/harald.png"> 
+    }
+</div>
+

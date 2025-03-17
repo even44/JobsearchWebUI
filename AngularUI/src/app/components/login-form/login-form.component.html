@@ -9,5 +9,6 @@
         </div>
         <button class="btn btn-success" style="margin-right: 5px;" type="submit" [disabled]="!loginGroup.valid">Login</button>
     </form>
-    <button class="btn btn-success" [disabled]="!loginGroup.valid" (click)="register()">Register</button>
+    <button id="register" class="btn btn-success" [disabled]="!loginGroup.valid" (click)="register()">Register</button>
+    <label style="margin-left: 1%;" for="register">Use the register button if your do not already have an account</label>
 }
